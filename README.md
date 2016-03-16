@@ -5,6 +5,7 @@ See http://bohwaz.net/archives/web/Bubble_Babble.html for details.
 
 Original Copyright 2011 BohwaZ - http://bohwaz.net/  
 Copyleft 2015 europa - https://github.com/eur0pa
+Copyright 2016 zefciu - https://github.com/zefciu
 
 Based on :
 - Bubble Babble spec: http://wiki.yak.net/589/Bubble_Babble_Encoding.txt
