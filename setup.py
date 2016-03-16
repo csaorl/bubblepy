@@ -12,6 +12,7 @@ setup(
     py_modules=['bubblepy'],
     author='Szymon Pyżalski',
     author_email='zefciu <szymon@pythonista.net>',
+    url='https://github.com/zefciu/bubblepy',
     description='Bubble Babble Binary Data Encoding',
     long_description=long_description,
     install_requires=['six>=1.10.0'],
