@@ -7,6 +7,10 @@ from bubblepy import BubbleBabble
 class TestBB(unittest.TestCase):
 
     BB = BubbleBabble()
+    CYR_BB = BubbleBabble(
+        consonants=u'бгджзклмнпрстфхцч',
+        vowels=u'аиоуыэ',
+    )
 
     TESTS = {
         ('', 'xexax'),
@@ -47,3 +51,16 @@ class TestBB(unittest.TestCase):
         """Test decoding valid values"""
         for src, encoded in self.TESTS:
             self.assertEqual(self.BB.decode(encoded).decode('utf-8'), src)
+
+    def test_encode_cyrillic(self):
+        """Encode data with cirillic alphabet"""
+        src = b'0123456789'
+        encoded = u'читаж-гатиж-жэфиж-кыфож-мухуж-почоч'
+        self.assertEqual(
+            self.CYR_BB.encode(src),
+            encoded,
+        )
+        self.assertEqual(
+            self.CYR_BB.decode(encoded),
+            src,
+        )

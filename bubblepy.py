@@ -15,13 +15,16 @@ def get_byte(v):
 
 class BubbleBabble(object):
     """ encodes or decodes to and from bubblebabble """
-    def __init__(self):
+    def __init__(
+            self, vowels='aeiouy', consonants='bcdfghklmnprstvzx', padding=None
+        ):
         super(BubbleBabble, self).__init__()
-        self.vowels = 'aeiouy'
-        self.consonants = 'bcdfghklmnprstvzx'
+        self.vowels = vowels
+        self.consonants = consonants
+        self.padding = padding or self.consonants[-1]
 
     def encode(self, src):
-        out = 'x'
+        out = self.padding
         c = 1
 
         for i in six.moves.range(0, len(src) + 1, 2):
@@ -48,18 +51,25 @@ class BubbleBabble(object):
 
             c = (c * 5 + byte1 * 7 + byte2) % 36
 
-        out += 'x'
+        out += self.padding
 
         return out
 
     def decode(self, src):
         c = 1
 
-        if src[0] is not 'x':
-            raise ValueError("corrupt string at offset 0: must begin with a 'x'")
+        if src[0] != self.padding:
+            raise ValueError(
+                "corrupt string at offset 0: must begin with a '{}'".format(
+                    self.padding
+                )
+            )
 
-        if src[-1] is not 'x':
-            raise ValueError("corrupt string at the last offset: must end with a 'x'")
+        if src[-1] != self.padding:
+            raise ValueError(
+                "corrupt string at the last offset: must end with a '{}'".\
+                    format(self.padding)
+            )
 
         if len(src) != 5 and len(src) % 6 != 5:
             raise ValueError("corrupt string: wrong length")

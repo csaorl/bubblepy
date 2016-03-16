@@ -8,7 +8,7 @@ with open('README.md') as f:
 
 setup(
     name='bubblepy',
-    version='0.9',
+    version='1.0',
     py_modules=['bubblepy'],
     author='Szymon Pyżalski',
     author_email='zefciu <szymon@pythonista.net>',
