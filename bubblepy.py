@@ -8,7 +8,7 @@ def get_byte(v):
         result = v
     else:
         result = ord(v)
-    if not 0 < result < 255:
+    if not 0 <= result <= 255:
         raise ValueError('Non-ASCII character found. Encode your data')
     return result
 
